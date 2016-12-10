@@ -1,0 +1,33 @@
+#!/usr/bin/env node
+require('babel-register')
+
+const path = require('path')
+const fs = require('fs')
+const webpack = require('webpack')
+const webpackDevServer = require('webpack-dev-server')
+
+let configPath
+
+try {
+  configPath = path.resolve(process.cwd(), './webpack.config.js')
+} catch (e) {
+  throw new Error(e)
+}
+
+const config = require(configPath)
+
+if (config.entry && config.entry.main) {
+  config.entry.main.unshift('webpack-dev-server/client?http://localhost:3000', 'webpack/hot/dev-server')
+}
+
+const compiler = webpack(config)
+const server = new webpackDevServer(compiler, {
+  hot: true,
+  quiet: true,
+  noInfo: true,
+  stats: { colors: true }
+})
+
+server.listen(3000, () => {
+  console.log('\n\n💥💥💥💥💥💥💥💥🚀\n\nServer running on localhost:3000\n\n💥💥💥💥💥💥💥💥🚀')
+})

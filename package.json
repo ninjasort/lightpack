@@ -1,0 +1,56 @@
+{
+  "name": "quickpack",
+  "version": "1.0.0",
+  "description": "",
+  "main": "lib/index.js",
+  "babel": {
+    "presets": [
+      "latest",
+      "stage-0",
+      "react"
+    ]
+  },
+  "ava": {
+    "require": [
+      "babel-register"
+    ],
+    "babel": "inherit"
+  },
+  "bin": {
+    "quickpack": "./bin/quickpack",
+    "quickpack-server": "./bin/quickpack-server"
+  },
+  "scripts": {
+    "build": "babel src -d lib",
+    "test": "ava **/*.test.js"
+  },
+  "author": "Cameron Roe <cameronjroe@gmail.com> (http://cameronroe.com/)",
+  "license": "MIT",
+  "devDependencies": {
+    "ava": "^0.17.0",
+    "babel-cli": "^6.18.0"
+  },
+  "dependencies": {
+    "autoprefixer": "^6.5.3",
+    "babel-core": "^6.20.0",
+    "babel-loader": "^6.2.9",
+    "babel-polyfill": "^6.20.0",
+    "babel-preset-latest": "^6.16.0",
+    "babel-preset-react": "^6.16.0",
+    "babel-preset-stage-0": "^6.16.0",
+    "babel-register": "^6.18.0",
+    "commander": "^2.9.0",
+    "css-loader": "^0.26.1",
+    "extract-text-webpack-plugin": "^1.0.1",
+    "html-webpack-plugin": "^2.24.1",
+    "json-loader": "^0.5.4",
+    "postcss-loader": "^1.2.0",
+    "raw-loader": "^0.5.1",
+    "react-hot-loader": "3.0.0-beta.6",
+    "sass-loader": "^4.0.2",
+    "style-loader": "^0.13.1",
+    "webpack": "2.1.0-beta.27",
+    "webpack-dev-server": "2.1.0-beta.12",
+    "webpack-md5-hash": "^0.0.5"
+  }
+}
