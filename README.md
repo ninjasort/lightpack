@@ -2,7 +2,7 @@
 
 > Quick tool for webpack. Call a function and get to the real work...
 
-### Usage
+### Quick Set Up
 
 Add the lib
 
@@ -24,7 +24,7 @@ const config = quickpack(process.env.NODE_ENV)
 module.exports = config
 ```
 
-With Options & Plugins
+### With Options & Plugins
 
 ```sh
 yarn add webpack friendly-errors-webpack-plugin --dev
