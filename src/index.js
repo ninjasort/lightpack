@@ -120,7 +120,7 @@ export default (options = {}, env) => {
       'webpack/hot/only-dev-server'
     )
 
-    config.module.rules.concat([
+    config.module.rules = config.module.rules.concat([
       rules.json,
       rules.scss
     ])

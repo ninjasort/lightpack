@@ -1,24 +1,27 @@
 #!/usr/bin/env node
+require('babel-register')
 
 const path = require('path')
 const fs = require('fs')
+const webpack = require('webpack')
+const configPath = path.resolve(process.cwd(), 'webpack.config.js')
 
-const fileData = `
-import lightpack from 'lightpack'
+const config = require(configPath)
 
-const config = lightpack({}, process.env.NODE_ENV)
-
-module.exports = config
-`
-
-console.log('Creating webpack.config.js...')
-
-fs.writeFile(
-  path.resolve(process.cwd(), 'webpack.config.js'),
-  fileData,
-  'utf-8',
-  (err) => {
-    if (err) throw new Error(err)
-    console.log('webpack.config.js created. 👍')
+webpack(config, function (err, stats) {
+  if (err) {
+    return console.log(err)
   }
-)
+  
+  const jsonStats = stats.toJson()
+  
+  if (jsonStats.errors.length > 0) {
+    console.log(jsonStats.errors)
+  }
+
+  if (jsonStats.warnings.length > 0) {
+    console.log(jsonStats)
+  }
+
+  console.log(`${new Date(Date.now())} Bundle created. 👾`)
+})

@@ -1,0 +1,24 @@
+#!/usr/bin/env node
+
+const path = require('path')
+const fs = require('fs')
+
+const fileData = `
+import lightpack from 'lightpack'
+
+const config = lightpack({}, process.env.NODE_ENV)
+
+module.exports = config
+`
+
+console.log('Creating webpack.config.js...')
+
+fs.writeFile(
+  path.resolve(process.cwd(), 'webpack.config.js'),
+  fileData,
+  'utf-8',
+  (err) => {
+    if (err) throw new Error(err)
+    console.log('webpack.config.js created. 👍')
+  }
+)
