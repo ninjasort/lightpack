@@ -4,9 +4,9 @@ const path = require('path')
 const fs = require('fs')
 
 const fileData = `
-import quickpack from 'quickpack'
+import lightpack from 'lightpack'
 
-const config = quickpack({}, process.env.NODE_ENV)
+const config = lightpack({}, process.env.NODE_ENV)
 
 module.exports = config
 `
