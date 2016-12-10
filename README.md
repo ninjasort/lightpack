@@ -1,4 +1,4 @@
-# quickpack
+# lightpack
 
 > Quick tool for webpack. Call a function and get to the real work...
 
@@ -7,7 +7,7 @@
 Add the lib
 
 ```sh
-$ yarn add quickpack --dev
+$ yarn add lightpack --dev
 ```
 
 - Create a `webpack.config.js`
@@ -17,9 +17,9 @@ $ yarn add quickpack --dev
   - production
 
 ```js
-import quickpack from 'quickpack'
+import lightpack from 'lightpack'
 
-const config = quickpack(process.env.NODE_ENV)
+const config = lightpack(process.env.NODE_ENV)
 
 module.exports = config
 ```
@@ -31,10 +31,10 @@ $ yarn add webpack friendly-errors-webpack-plugin --dev
 ```
 
 ```js
-import quickpack from 'quickpack'
+import lightpack from 'lightpack'
 import FriendlyErrorsWebpackPlugin from 'friendly-errors-webpack-plugin'
 
-const config = quickpack({
+const config = lightpack({
   entry: {
     main: ['./src/index'], // main required
     vendor: ['./src/vendor']

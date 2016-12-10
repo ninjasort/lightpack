@@ -1,6 +1,6 @@
 import test from 'ava'
 import Logger from './plugin'
-import quickpack from './'
+import lightpack from './'
 
 process.env.NODE_ENV = 'development'
 
@@ -9,7 +9,7 @@ let config
 // NODE_ENV === development
 // -------------------------------------------------
 test.before(t => {
-  config = quickpack(process.env.NODE_ENV)
+  config = lightpack(process.env.NODE_ENV)
 })
 
 test('webpack has a config object', t => {
@@ -17,7 +17,7 @@ test('webpack has a config object', t => {
 })
 
 test('should add new plugin', t => {
-  const less = quickpack(process.env.NODE_ENV) // 5
-  const more = quickpack({ plugins: [new Logger({ message: 'works' })] }, process.env.NODE_ENV) // 6
+  const less = lightpack(process.env.NODE_ENV) // 5
+  const more = lightpack({ plugins: [new Logger({ message: 'works' })] }, process.env.NODE_ENV) // 6
   t.is(more.plugins.length > less.plugins.length, true)
 })

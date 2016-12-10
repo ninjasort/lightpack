@@ -1,5 +1,5 @@
 {
-  "name": "quickpack",
+  "name": "lightpack",
   "version": "1.0.0",
   "description": "",
   "main": "lib/index.js",
@@ -17,8 +17,8 @@
     "babel": "inherit"
   },
   "bin": {
-    "quickpack": "./bin/quickpack",
-    "quickpack-server": "./bin/quickpack-server"
+    "lightpack": "./bin/lightpack",
+    "lightpack-server": "./bin/lightpack-server"
   },
   "scripts": {
     "build": "babel src -d lib",

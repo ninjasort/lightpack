@@ -1,6 +1,6 @@
 import test from 'ava'
 import Logger from './plugin'
-import quickpack from './'
+import lightpack from './'
 
 process.env.NODE_ENV = 'test'
 
@@ -9,7 +9,7 @@ let config
 // NODE_ENV === test
 // -------------------------------------------------
 test.before(t => {
-  config = quickpack(process.env.NODE_ENV)
+  config = lightpack(process.env.NODE_ENV)
 })
 
 test.after(t => {
