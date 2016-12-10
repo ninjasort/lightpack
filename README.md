@@ -10,11 +10,10 @@ Add the lib
 $ yarn add lightpack --dev
 ```
 
-- Scaffold a `webpack.config.js` with `$ lightpack-config`
-- Set process.env.NODE_ENV
-  - test  
-  - development
-  - production
+Scaffold a `webpack.config.js`
+```sh
+$ lightpack-config
+```
 
 ```js
 import lightpack from 'lightpack'
@@ -24,7 +23,12 @@ const config = lightpack(process.env.NODE_ENV)
 module.exports = config
 ```
 
-- Update npm scripts
+Set process.env.NODE_ENV
+  - test  
+  - development
+  - production
+
+Update npm scripts
 
 ```json
 {
@@ -34,8 +38,14 @@ module.exports = config
   }
 }
 ```
-- Run `$ npm start` for webpack-dev-server
-- Run `$ npm run build` for webpack
+Run webpack or webpack-dev-server
+
+```sh
+$ npm start
+```
+```
+$ npm run build
+```
 
 ### With Options & Plugins
 
