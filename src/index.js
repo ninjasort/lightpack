@@ -48,6 +48,10 @@ export default (options = {}, env) => {
       path.resolve(options.context || './src', '../node_modules'),
     ]
   }
+  
+  if (options.target) {
+    config.target = options.target
+  }
 
   config.module = {
     rules: [
@@ -166,10 +170,14 @@ export default (options = {}, env) => {
     config.entry.main.unshift('babel-polyfill')
 
     config.output.filename = '[name].[chunkhash].js'
-
+    
+    config.module.rules.push(rules.json)
     config.module.rules.push({
       test: /\.scss$/,
-      loader: ExtractTextPlugin.extract('css-loader?-autoprefixer!postcss-loader!sass-loader')
+      loader: ExtractTextPlugin.extract({
+        fallbackLoader: 'style-loader',
+        loader: 'css-loader?-autoprefixer!postcss-loader!sass-loader'
+      })
     })
 
     config.plugins.push(
