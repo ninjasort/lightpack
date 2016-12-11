@@ -128,7 +128,7 @@ export default (options = {}, env) => {
   //  DEVELOPMENT
   //-------------------------------------
   if (ENV_DEVELOPMENT) {
-    config.devtool = 'cheap-module-source-map'
+    config.devtool = options.devtool || 'cheap-module-source-map'
 
     config.entry.main.unshift('react-hot-loader/patch')
 
