@@ -29,9 +29,9 @@ export default (options = {}, env) => {
   const rules = {
     js: {test: /\.js$/, exclude: /node_modules/, loader: 'babel-loader'},
     json: {test: /\.json$/, loader: 'json-loader'},
-    scss: {test: /\.(scss|css)$/, loader: 'style-loader!css-loader!postcss-loader!sass-loader'},
-    woff: { test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/, loader: 'url-loader?limit=10000&mimetype=application/font-woff' },
-    file: { test: /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/, loader: 'file-loader' }
+    scss: {test: /\.(scss|css|sass)$/, loader: 'style-loader!css-loader!postcss-loader!sass-loader'},
+    woff: {test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/, loader: 'url-loader?limit=10000&mimetype=application/font-woff'},
+    file: {test: /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/, loader: 'file-loader'}
   }
 
   config.resolve = {
@@ -177,7 +177,7 @@ export default (options = {}, env) => {
     
     config.module.rules.push(rules.json)
     config.module.rules.push({
-      test: /\.scss$/,
+      test: /\.(scss|sass)$/,
       loader: ExtractTextPlugin.extract({
         fallbackLoader: 'style-loader',
         loader: 'css-loader?-autoprefixer!postcss-loader!sass-loader'
