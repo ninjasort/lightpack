@@ -107,7 +107,7 @@ export default (options = {}, env) => {
     } : Object.assign({
       filename: 'index.html',
       hash: false,
-      inject: 'body',
+      inject: options.inject || 'body',
       template: './src/index.html'
     }, options.html)
 
