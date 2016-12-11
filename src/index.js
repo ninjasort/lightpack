@@ -130,10 +130,7 @@ export default (options = {}, env) => {
   if (ENV_DEVELOPMENT) {
     config.devtool = 'cheap-module-source-map'
 
-    config.entry.main.unshift(
-      'react-hot-loader/patch',
-      'webpack/hot/only-dev-server'
-    )
+    config.entry.main.unshift('react-hot-loader/patch')
 
     config.module.rules = config.module.rules.concat([
       rules.json,
