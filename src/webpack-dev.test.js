@@ -21,3 +21,15 @@ test('should add new plugin', t => {
   const more = lightpack({ plugins: [new Logger({ message: 'works' })] }, process.env.NODE_ENV) // 6
   t.is(more.plugins.length > less.plugins.length, true)
 })
+
+test('overrides a html injection', t => {
+  const standard = lightpack(process.env.NODE_ENV)
+  const override = lightpack({
+    html: {
+      inject: false
+    }
+  }, process.env.NODE_ENV)
+  
+  t.is(standard.plugins[2].options.inject, 'body')
+  t.is(override.plugins[2].options.inject, false)
+})

@@ -95,13 +95,18 @@ export default (options = {}, env) => {
       publicPath: '/'
     }
     
-    const html = {
+    const html = (typeof options.html === 'string') ? {
       filename: 'index.html',
       hash: false,
       inject: 'body',
       template: options.html || './src/index.html'
-    }
-    
+    } : Object.assign({
+      filename: 'index.html',
+      hash: false,
+      inject: 'body',
+      template: './src/index.html'
+    }, options.html)
+
     config.plugins.push(
       new HtmlWebpackPlugin(html)
     )
