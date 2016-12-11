@@ -63,14 +63,14 @@ export default (options = {}, env) => {
       debug: false,
       minimize: ENV_PRODUCTION,
       options: {
-	postcss: [
-	  autoprefixer({browsers: ['last 3 versions']})
-	],
-	sassLoader: {
-	  outputStyle: 'compressed',
-	  precision: 10,
-	  sourceComments: false
-	}
+        postcss: [
+          autoprefixer({browsers: ['last 3 versions']})
+        ],
+        sassLoader: {
+          outputStyle: 'compressed',
+          precision: 10,
+          sourceComments: false
+        }
       }
     })
   ]
@@ -83,7 +83,7 @@ export default (options = {}, env) => {
 
     if (options.entry && options.entry.main && typeof options.entry.main === 'string') {
       options.entry.main = [
-	options.entry.main
+        options.entry.main
       ]
     }
 
@@ -94,14 +94,16 @@ export default (options = {}, env) => {
       path: path.resolve(options.context || './dist'),
       publicPath: '/'
     }
-
+    
+    const html = {
+      filename: 'index.html',
+      hash: false,
+      inject: 'body',
+      template: options.html || './src/index.html'
+    }
+    
     config.plugins.push(
-      new HtmlWebpackPlugin({
-	filename: 'index.html',
-	hash: false,
-	inject: 'body',
-	template: options.html || './src/index.html'
-      })
+      new HtmlWebpackPlugin(html)
     )
 
     // add user's plugins
@@ -137,15 +139,15 @@ export default (options = {}, env) => {
       hot: true,
       port: PORT,
       stats: {
-	cached: true,
-	cachedAssets: true,
-	chunks: true,
-	chunkModules: false,
-	colors: true,
-	hash: false,
-	reasons: true,
-	timings: true,
-	version: false
+        cached: true,
+        cachedAssets: true,
+        chunks: true,
+        chunkModules: false,
+        colors: true,
+        hash: false,
+        reasons: true,
+        timings: true,
+        version: false
       }
     }
   }
@@ -169,16 +171,16 @@ export default (options = {}, env) => {
       new WebpackMd5Hash(),
       new ExtractTextPlugin('styles.[contenthash].css'),
       new UglifyJsPlugin({
-	comments: false,
-	compress: {
-	  dead_code: true, // eslint-disable-line camelcase
-	  screw_ie8: true, // eslint-disable-line camelcase
-	  unused: true,
-	  warnings: false
-	},
-	mangle: {
-	  screw_ie8: true  // eslint-disable-line camelcase
-	}
+        comments: false,
+        compress: {
+          dead_code: true, // eslint-disable-line camelcase
+          screw_ie8: true, // eslint-disable-line camelcase
+          unused: true,
+          warnings: false
+        },
+        mangle: {
+          screw_ie8: true  // eslint-disable-line camelcase
+        }
       })
     )
   }
