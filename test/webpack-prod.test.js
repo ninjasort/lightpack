@@ -12,9 +12,12 @@ let config
 // -------------------------------------------------
 test.before(t => {
   config = lightpack({
-    context: './fixtures',
+    context: path.resolve(__dirname, './fixtures'),
     entry: {
       main: ['./src/index.js']
+    },
+    output: {
+      path: __dirname + '/fixtures/dist'
     },
     target: 'node',
     html: {

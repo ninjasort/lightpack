@@ -174,7 +174,7 @@ export default (options = {}, env) => {
     
     config.module.rules.push(rules.json)
     config.module.rules.push({
-      test: /\.(scss|sass)$/,
+      test: rules.scss.test,
       loader: ExtractTextPlugin.extract({
         fallbackLoader: 'style-loader',
         loader: 'css-loader?-autoprefixer!postcss-loader!sass-loader'
