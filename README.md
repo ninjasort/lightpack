@@ -1,5 +1,7 @@
 # lightpack
 
+![](bolt.png)
+
 > Quick tool for webpack. Call a function and get to the real work...
 
 ### Quick Set Up
