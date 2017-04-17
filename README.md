@@ -14,7 +14,7 @@ $ yarn add lightpack --dev
 
 Scaffold a `webpack.config.js`
 ```sh
-$ lightpack-config
+$ ./node_modules/.bin/lightpack-config
 ```
 
 ```js
