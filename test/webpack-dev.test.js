@@ -1,20 +1,14 @@
 import test from 'ava'
+import path from 'path'
 import Logger from '../src/plugin'
+import webpack from 'webpack'
 import lightpack from '../src'
+import fs from 'fs'
 
 process.env.NODE_ENV = 'development'
 
-let config
-
 // NODE_ENV === development
 // -------------------------------------------------
-test.before(t => {
-  config = lightpack(process.env.NODE_ENV)
-})
-
-test('webpack has a config object', t => {
-  t.is(typeof config, 'object')
-})
 
 test('should add new plugin', t => {
   const less = lightpack(process.env.NODE_ENV) // 5
@@ -33,3 +27,39 @@ test('overrides a html injection', t => {
   t.is(standard.plugins[2].options.inject, 'body')
   t.is(override.plugins[2].options.inject, false)
 })
+
+test('should throw error if no src/index.html is present', t => {
+  const error = t.throws(() => {
+    
+    lightpack({
+      context: path.resolve(__dirname, './html-creation'),
+      entry: {
+        main: ['./src/index.js']
+      },
+      output: {
+        path: __dirname + '/html-creation/dist'
+      }
+    }, process.env.NODE_ENV)
+
+  }, Error)
+  
+  t.is(error.message, 'Could not find index.html in root src/ directory. Please add one and try again.')
+})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -24,6 +24,7 @@
   "scripts": {
     "build": "babel src -d lib",
     "test": "ava **/*.test.js",
+    "test:watch": "ava **/*.test.js -w",
     "prepublish": "npm run build"
   },
   "author": "Cameron Roe <cameronjroe@gmail.com> (http://cameronroe.com/)",

@@ -1,4 +1,5 @@
 import path from 'path'
+import fs from 'fs'
 import webpack from 'webpack'
 import autoprefixer from 'autoprefixer'
 import DefinePlugin from 'webpack/lib/DefinePlugin'
@@ -103,6 +104,12 @@ export default (options = {}, env) => {
       publicPath: '/'
     }
     
+    // check if there's a src/index.html and create one if not
+    const htmlFile = path.resolve((options.context || ''), './src/index.html')
+    if (!fs.existsSync(htmlFile)) {
+      throw new Error('Could not find index.html in root src/ directory. Please add one and try again.')
+    }
+    
     const html = (typeof options.html === 'string') ? {
       filename: 'index.html',
       hash: false,
@@ -176,8 +183,8 @@ export default (options = {}, env) => {
     config.module.rules.push({
       test: rules.scss.test,
       loader: ExtractTextPlugin.extract({
-        fallbackLoader: 'style-loader',
-        loader: 'css-loader?-autoprefixer!postcss-loader!sass-loader'
+        fallback: 'style-loader',
+        use: 'css-loader?-autoprefixer!postcss-loader!sass-loader'
       })
     })
 
